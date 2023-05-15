@@ -1,7 +1,6 @@
 # CS219-Project-3-ARM-Processor-Simulator
-# CS 219 Project 3 - ARM Processor Simulator
 
-This project is an ARM processor simulation implemented in C++ that allows for the execution of ARM instructions and tracking of register states. It provides a practical tool to understand and simulate the behavior of an ARM processor.
+This project is an ARM processor simulator implemented in C++ that allows for the execution of ARM instructions and tracking of register states. It provides a practical tool to understand and simulate the behavior of an ARM processor.
 
 ## Table of Contents
 - [Description](#description)
@@ -26,7 +25,7 @@ The ARM Processor Simulation project aims to simulate the execution of ARM instr
 
 ## Getting Started
 
-To get started with the ARM Processor Simulation, follow these steps:
+To get started with the ARM Processor Simulator, follow these steps:
 
 1. Clone the repository:
 
@@ -50,7 +49,7 @@ To get started with the ARM Processor Simulation, follow these steps:
 
 ## Usage
 
-The ARM Processor Simulation requires an input file containing the ARM instructions. Each instruction should be on a separate line. After executing the instructions, the simulation will display the register states.
+The ARM Processor Simulator requires an input file containing the ARM instructions. Each instruction should be on a separate line. After executing the instructions, the simulation will display the register states.
 
 Example input file (input.txt):
 
@@ -81,7 +80,7 @@ R3: 0x00000014
 
 ## Contributing
 
-Contributions to the ARM Processor Simulation are welcome! If you would like to contribute, please follow these steps:
+Contributions to the ARM Processor Simulator are welcome! If you would like to contribute, please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch.
@@ -92,14 +91,14 @@ Contributions to the ARM Processor Simulation are welcome! If you would like to 
 
 ## License
 
-The ARM Processor Simulation is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
+The ARM Processor Simulator is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 ## Contact
 
 For any questions or inquiries, please contact the author:
 
 Author: JoJo Petersky
-Email: jojo.petersky@example.com
+Email: jpetersky@nevada.unr.edu
 
 ## Assignment Details
 
