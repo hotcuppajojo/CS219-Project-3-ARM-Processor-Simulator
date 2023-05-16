@@ -49,7 +49,6 @@ private:
     void sub(const std::string& destReg, const std::string& operand1, const std::string& operand2);
     void andOp(const std::string& destReg, const std::string& operand1, const std::string& operand2);
     void orr(const std::string& destReg, const std::string& operand1, const std::string& operand2);
-    void eor(const std::string& destReg, const std::string& operand1, const std::string& operand2);
     void xorOp(const std::string& destReg, const std::string& operand1, const std::string& operand2);
     void lsl(const std::string& destReg, const std::string& operand1, const std::string& operand2);
     void lsr(const std::string& destReg, const std::string& operand1, const std::string& operand2);

@@ -24,7 +24,6 @@ ARMProcessor::ARMProcessor() {
     opFuncs["SUB"] = std::bind(&ARMProcessor::sub, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     opFuncs["AND"] = std::bind(&ARMProcessor::andOp, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     opFuncs["ORR"] = std::bind(&ARMProcessor::orr, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-    opFuncs["EOR"] = std::bind(&ARMProcessor::eor, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     opFuncs["XOR"] = std::bind(&ARMProcessor::xorOp, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     opFuncs["LSL"] = std::bind(&ARMProcessor::lsl, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
     opFuncs["LSR"] = std::bind(&ARMProcessor::lsr, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
@@ -326,25 +325,6 @@ void ARMProcessor::orr(const std::string& destReg, const std::string& operand1, 
         Register result = registers.at(upperOperand1) | registers.at(upperOperand2);
         // Assign the result to the destination register
         registers.at(destReg) = result;
-        // Update the status flags based on the new register value
-        updateFlags(result);
-    } else {
-        // Output an error message if any of the registers are invalid
-        std::cerr << "Invalid registers: " << destReg << ", " << operand1 << ", " << operand2 << std::endl;
-    }
-}
-void ARMProcessor::eor(const std::string& destReg, const std::string& operand1, const std::string& operand2) {
-    // Perform the bitwise XOR operation between two registers and store the result in the destination register
-    // Parameters:
-    // - destReg: The destination register to store the result
-    // - operand1: The first operand register
-    // - operand2: The second operand register
-    // Check if the destination register and operand registers are valid
-    if (isValidRegister(destReg) && isValidRegister(operand1) && isValidRegister(operand2)) {
-        // Perform the bitwise XOR operation between operand1 and operand2 and store the result in result
-        Register result = registers.at(operand1) ^ registers.at(operand2);
-        // Assign the result to the destination register
-        registers[destReg] = result;
         // Update the status flags based on the new register value
         updateFlags(result);
     } else {

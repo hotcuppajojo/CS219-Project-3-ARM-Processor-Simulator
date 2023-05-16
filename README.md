@@ -1,6 +1,6 @@
 # CS219-Project-3-ARM-Processor-Simulator
 
-This project is an ARM processor simulator implemented in C++ that allows for the execution of ARM instructions and tracking of register states. It provides a practical tool to understand and simulate the behavior of an ARM processor.
+This project is an ARM processor simulator implemented in C++ that allows for the execution of ARM instructions and tracking of seven register states. It provides a practical tool to understand and simulate the behavior of an ARM processor with seven registers.
 
 ## Table of Contents
 - [Description](#description)
@@ -15,12 +15,12 @@ This project is an ARM processor simulator implemented in C++ that allows for th
 
 ## Description
 
-The ARM Processor Simulation project aims to simulate the execution of ARM instructions and track the register states during the execution process. It is implemented in C++ and provides a command-line interface to interact with the simulation.
+The ARM Processor Simulation project aims to simulate the execution of ARM instructions and track the state of seven registers during the execution process. It is implemented in C++ and provides a command-line interface to interact with the simulation.
 
 ## Features
 
 - Parsing and execution of various ARM instructions
-- Tracking and updating register states
+- Tracking and updating the state of seven registers
 - Error handling for invalid instructions, registers, and operands
 
 ## Getting Started
@@ -30,13 +30,20 @@ To get started with the ARM Processor Simulator, follow these steps:
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your-username/arm-processor-simulation.git
+   git clone https://github.com/hotcuppajojo/CS219-Project-3-ARM-Processor-Simulator.git
    ```
-
-2. Compile the source code:
+   
+2. Navigate into the project directory:
 
    ```shell
-   g++ -o Proj3 main.cpp
+   cd CS219-Project-3-ARM-Processor-Simulator
+   ```
+
+
+3. Compile the source code using the provided Makefile:
+
+   ```shell
+   make
    ```
 
 3. Run the simulation:
@@ -54,28 +61,49 @@ The ARM Processor Simulator requires an input file containing the ARM instructio
 Example input file (input.txt):
 
 ```
-MOV R1, #10
-ADD R2, R1, #20
-SUB R3, R2, R1
+MOV R1, #0X72DF9901
+MOV R2, #0X2E0B484A
+ADD R3, R1, R2
 ```
 
 Example output:
 
 ```
-MOV R1, #10
+MOV R1, #0X72DF9901
 Register state:
-R1: 0x0000000A
+CSPR: N=0 Z=0 C=0 V=0
+R0: 0x00000000
+R1: 0x72DF9901
+R2: 0x00000000
+R3: 0x00000000
+R4: 0x00000000
+R5: 0x00000000
+R6: 0x00000000
+R7: 0x00000000
 
-ADD R2, R1, #20
+MOV R2, #0X2E0B484A
 Register state:
-R1: 0x0000000A
-R2: 0x0000001E
+CSPR: N=0 Z=0 C=0 V=0
+R0: 0x00000000
+R1: 0x72DF9901
+R2: 0x2E0B484A
+R3: 0x00000000
+R4: 0x00000000
+R5: 0x00000000
+R6: 0x00000000
+R7: 0x00000000
 
-SUB R3, R2, R1
+ADD R3, R1, R2
 Register state:
-R1: 0x0000000A
-R2: 0x0000001E
-R3: 0x00000014
+CSPR: N=1 Z=0 C=1 V=0
+R0: 0x00000000
+R1: 0x72DF9901
+R2: 0x2E0B484A
+R3: 0xA0EAE14B
+R4: 0x00000000
+R5: 0x00000000
+R6: 0x00000000
+R7: 0x00000000
 ```
 
 ## Contributing
@@ -102,7 +130,7 @@ Email: jpetersky@nevada.unr.edu
 
 ## Assignment Details
 
-This project is developed as part of the CS 219 course project. The goal is to simulate the execution of ARM instructions using a custom ARM processor implementation.
+This project is developed as part of the CS 219 course for project 3. The goal is to simulate the execution of ARM instructions using a custom ARM processor implementation with seven registers.
 
 The project consists of the following files:
 
@@ -117,18 +145,18 @@ The project consists of the following files:
 
 ## Result and Working Process
 
-The ARM processor simulator allows the execution of ARM instructions. Upon running the program with a file containing ARM instructions, the program will read the instructions, execute them one by one, and display the register state after each instruction.
+The ARM processor simulator is a practical tool designed to execute ARM instructions and provide a clear view of the internal workings of an ARM processor. Given a file with ARM instructions, the simulator executes these instructions in sequence, updating and displaying the state of seven registers after each operation.
 
-To use the simulator, follow the usage instructions mentioned above. The simulator supports various ARM instructions, such as MOV, ADD, SUB, AND, ORR, EOR, XOR, LSL, LSR, and ASR. Each instruction can have operands and produces results that affect the register state. The simulator updates the register values and the status flags (N, Z, C, V) accordingly.
+To use the simulator, simply follow the provided usage instructions. The simulator can handle a variety of ARM instructions, including MOV, ADD, SUB, AND, ORR, XOR, LSL, LSR, and ASR. The software efficiently updates the register values and status flags (N, Z, C, V) in response to each instruction, providing a comprehensive view of the execution process.
 
-During the development process, the ARM processor simulator was implemented using the C++ programming language. The `ARMProcessor` class represents the processor and contains member functions to execute different types of ARM instructions. Additional classes, such as `CSPR` and `Register`, were created to handle the Current Program Status Register and general-purpose registers, respectively.
+Developed using C++, the simulator leverages the power of object-oriented programming. The `ARMProcessor` class serves as the core, handling the processor's functionalities. The `CSPR` and `Register` classes manage the Current Program Status Register and seven general-purpose registers, respectively.
 
-The implementation followed the assignment requirements and involved parsing the instructions from a file, validating the registers and operands, performing the corresponding operations, updating the register values and status flags, and displaying the register state after each instruction.
+The development process was anchored on a set of specific assignment requirements. These included parsing instructions from a file, validating the registers and operands, executing the operations, updating the register values and status flags, and displaying the register state after each instruction.
 
-Throughout the development process, proper error handling and exception handling were implemented to ensure the stability and reliability of the simulator. Invalid instructions, registers, or operands are detected, and appropriate error messages are displayed.
+The simulator places a high emphasis on error handling. Invalid instructions, registers, or operands are identified, and the user is informed through clear error messages. This focus on error handling enhances the reliability and stability of the simulator.
 
-The simulator was tested with various sets of ARM instructions to verify its correctness and accuracy. The register state was carefully tracked after each instruction execution to ensure that the results match the expected behavior.
+The simulator was tested extensively using various sets of ARM instructions. This testing process verified the accuracy and reliability of the simulator by ensuring that the register state after each instruction execution matched expected outcomes.
 
-The project followed good coding practices, including modular design, encapsulation, and code reusability. The code is organized into separate files based on their functionality, promoting maintainability and readability. Comments are included throughout the code to explain the purpose and functionality of the different sections.
+The project adheres to good coding practices such as modular design, encapsulation, and code reusability. The code is organized into separate files based on functionality, facilitating maintainability and readability. Comments are incorporated throughout the code to provide context and explain functionality.
 
-In conclusion, this ARM processor simulator provides a practical tool to understand and simulate the execution of ARM instructions. It can be used for educational purposes or as a reference for understanding processor architectures. The simulator demonstrates the process of parsing instructions, executing operations, and updating register states, while adhering to good coding practices and error handling techniques.
+In conclusion, the ARM processor simulator is a useful tool for understanding the execution of ARM instructions. It is suitable for educational use or as a reference for studying processor architectures. The simulator demonstrates the parsing of instructions, execution of operations, and updating of register states, all while maintaining high coding standards and robust error handling.
